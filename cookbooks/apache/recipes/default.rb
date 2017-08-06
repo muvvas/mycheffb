@@ -9,6 +9,11 @@ package 'zsh' do
 	action :install
 end        
 
+if node['platform_family'] == "rhel"
+package = "http"
+elseif node['platform_family'] == "debain"
+package = "apache2"
+end
 package 'apache' do
 	package_name 'httpd'
 	action :install
